@@ -1,92 +1,40 @@
 import express from "express";
-import cors from 'cors'
+import cors from "cors";
+import path from "path";
+
 const app = express();
-app.use(cors())
+app.use(cors());
+
+// Serve images from "uploads" folder at "/uploads" path
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
+// Category Route
 app.get("/category", (req, res) => {
   res.json([
-    {
-      image: "North_Indian_4.jpeg",
-      path: "north-indian",
-    },
-    {
-      image: "Pizza.jpeg",
-      path: "pizza",
-    },
-    {
-      image: "Noodles.jpeg",
-      path: "noodles",
-    },
-    {
-      image: "Pasta.jpeg",
-      path: "pasta",
-    },
-    {
-      image: "Paratha.jpeg",
-      path: "paratha",
-    },
-    {
-      image: "Biryani_2.jpeg",
-      path: "biryani",
-    },
-    {
-      image: "Burger.jpeg",
-      path: "burger",
-    },
-    {
-      image: "Cakes.jpeg",
-      path: "cakes",
-    },
-    {
-      image: "Chinese.jpeg",
-      path: "chinese",
-    },
-    {
-      image: "Chole_Bature.jpeg",
-      path: "chole-bature",
-    },
-    {
-      image: "Dosa.jpeg",
-      path: "dost",
-    },
-    {
-      image: "Gulab_Jamun.jpeg",
-      path: "gulab-jamun",
-    },
-    {
-      image: "Ice_Creams.jpeg",
-      path: "ice-creams",
-    },
-    {
-      image: "Idli.jpeg",
-      path: "idli",
-    },
-    {
-      image: "Khichdi.jpeg",
-      path: "khichdi",
-    },
-    {
-      image: "Poori.jpeg",
-      path: "poori",
-    },
-    {
-      image: "Pure_Veg.jpeg",
-      path: "pure-veg",
-    },
-    {
-      image: "Rolls.jpeg",
-      path: "rolls",
-    },
-    {
-      image: "Salad.jpeg",
-      path: "salad",
-    },
-    {
-      image: "South_Indian_4.jpeg",
-      path: "south-indian",
-    },
+    { image: "North_Indian_4.jpeg", path: "north-indian" },
+    { image: "Pizza.jpeg", path: "pizza" },
+    { image: "Noodles.jpeg", path: "noodles" },
+    { image: "Pasta.jpeg", path: "pasta" },
+    { image: "Paratha.jpeg", path: "paratha" },
+    { image: "Biryani_2.jpeg", path: "biryani" },
+    { image: "Burger.jpeg", path: "burger" },
+    { image: "Cakes.jpeg", path: "cakes" },
+    { image: "Chinese.jpeg", path: "chinese" },
+    { image: "Chole_Bature.jpeg", path: "chole-bature" },
+    { image: "Dosa.jpeg", path: "dost" },
+    { image: "Gulab_Jamun.jpeg", path: "gulab-jamun" },
+    { image: "Ice_Creams.jpeg", path: "ice-creams" },
+    { image: "Idli.jpeg", path: "idli" },
+    { image: "Khichdi.jpeg", path: "khichdi" },
+    { image: "Poori.jpeg", path: "poori" },
+    { image: "Pure_Veg.jpeg", path: "pure-veg" },
+    { image: "Rolls.jpeg", path: "rolls" },
+    { image: "Salad.jpeg", path: "salad" },
+    { image: "South_Indian_4.jpeg", path: "south-indian" },
   ]);
 });
 
+// Restaurant Route
 app.get("/resturent", (req, res) => {
   res.json([
     {
@@ -191,6 +139,8 @@ app.get("/resturent", (req, res) => {
     },
   ]);
 });
+
+// Start Server
 app.listen(3000, () => {
-  console.log("server is running");
+  console.log("Server is running on http://localhost:3000");
 });
