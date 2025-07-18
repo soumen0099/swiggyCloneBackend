@@ -1,14 +1,13 @@
 import express from "express";
-import cors from "cors";
-import path from "path";
-
+import cors from 'cors';
 const app = express();
+
+// Enable CORS
 app.use(cors());
 
-// Serve images from "uploads" folder at "/uploads" path
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+// ✅ Serve static files from the "uploads" folder
+app.use('/uploads', express.static('uploads'));
 
-// Category Route
 app.get("/category", (req, res) => {
   res.json([
     { image: "North_Indian_4.jpeg", path: "north-indian" },
@@ -34,7 +33,6 @@ app.get("/category", (req, res) => {
   ]);
 });
 
-// Restaurant Route
 app.get("/resturent", (req, res) => {
   res.json([
     {
@@ -140,7 +138,7 @@ app.get("/resturent", (req, res) => {
   ]);
 });
 
-// Start Server
+// Start the server
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
